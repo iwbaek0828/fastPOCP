@@ -18,6 +18,8 @@ Compared with the ordinary published POCP paper (Qin et al., 2014), this softwar
 
 -t, --threads THREADS        Number of CPU threads for DIAMOND (default: 1)
 
+-j, --jobs JOBS              Number of genome-pair jobs to run in parallen (default: 1)
+
 -f, --label_file LABEL_FILE  Optional tab-delimited label file.
 
                              Format: inferred_id<tab>custom_label
