@@ -1,8 +1,8 @@
 # fastPOCP
 
-A software for calculating the pairwise percentage of conserved protein (POCP), an index for delineating the cutoff of genera.
+A software for calculating the pairwise percentage of conserved proteins (POCP), an index for delineating the cutoff of genera.
 
-Compared with the ordinary published POCP paper(Qin et al., 2014), this software implements DIAMOND software, for the ultrafast calculation of pairwise POCP values in large genome groups. 
+Compared with the ordinary published POCP paper (Qin et al., 2014), this software uses DIAMOND to perform ultrafast pairwise POCP calculations for large genome groups. 
 
 J Bacteriol. 2014 Jun;196(12):2210-5. doi: 10.1128/JB.01688-14. Epub 2014 Apr 4.
 A proposed genus boundary for the prokaryotes based on genomic insights. PMID 24706738
