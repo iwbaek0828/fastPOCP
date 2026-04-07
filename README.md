@@ -11,9 +11,13 @@ A proposed genus boundary for the prokaryotes based on genomic insights. PMID 24
 The options for fastPOCP
 
 -h, --help                   Show this help message and exit
+
 -d, --faa_dir FAA_DIR        Directory containing protein fasta files (*.faa, *.fasta, *.fa)
+
 -o, --output OUTPUT          Output CSV file for the pairwise POCP matrix
+
 -t, --threads THREADS        Number of CPU threads for DIAMOND (default: 1)
+
 -f, --label_file LABEL_FILE  Optional tab-delimited label file.
                              Format: inferred_id<tab>custom_label
                              Example: GCF_000005845<tab>Deinococcus radiodurans Ri
