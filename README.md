@@ -8,8 +8,8 @@ Compared with the ordinary published POCP paper (Qin et al., 2014), this softwar
   A proposed genus boundary for the prokaryotes based on genomic insights. PMID 24706738
 
 
-**The options for fastPOCP
-**
+<b>The options for fastPOCP</b>
+
 -h, --help                   Show this help message and exit
 
 -d, --faa_dir FAA_DIR        Directory containing protein fasta files (*.faa, *.fasta, *.fa)
