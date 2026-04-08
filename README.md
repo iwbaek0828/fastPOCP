@@ -8,7 +8,7 @@ Compared with the ordinary published POCP paper (Qin et al., 2014), this softwar
   A proposed genus boundary for the prokaryotes based on genomic insights. PMID 24706738
 
 
-1. Execute fastPOCP (generate CSV matrix)
+<b>1. Execute fastPOCP (generate CSV matrix)</b>
  
 python fastPOCP.py [options]
 
@@ -31,6 +31,6 @@ python fastPOCP.py [options]
                              Example: GCF_000005845<tab>Deinococcus radiodurans Ri
 
 
-2. Execute fastPOCP_plot (generate heatmap matrix figure)
+<b>2. Execute fastPOCP_plot (generate heatmap matrix figure)</b>
 
 python fastPOCP_plot.py [input PCOP matrix CSV] [output figure file path]
