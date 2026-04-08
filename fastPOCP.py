@@ -177,38 +177,8 @@ def build_tasks(faa_paths, total_gene_count_list, threads_per_job, mode,
             ))
     return tasks
 
-
-
-def draw_heatmap(df_pocp, output_file, annotate_limit=60):
-    import matplotlib.pyplot as plt
-
-    n = len(df_pocp)
-    fig_size = max(8, min(24, n * 0.25))
-    plt.figure(figsize=(fig_size, fig_size))
-    plt.imshow(df_pocp.values, vmin=0.0, vmax=100.0, aspect="auto")
-
-    if n <= annotate_limit:
-        for i in range(df_pocp.shape[1]):
-            for j in range(df_pocp.shape[0]):
-                plt.text(
-                    i, j,
-                    round(df_pocp.iloc[j, i], 2),
-                    ha="center", va="center", fontsize=6
-                )
-
-    plt.xticks(np.arange(len(df_pocp.columns)), df_pocp.columns, rotation=90, fontsize=6 if n > 60 else 8)
-    plt.yticks(np.arange(len(df_pocp.index)), df_pocp.index, fontsize=6 if n > 60 else 8)
-    plt.title("Pairwise POCP values heatmap", fontsize=14)
-    plt.colorbar()
-    plt.tight_layout()
-    plt.savefig(output_file + "_heatmap.pdf", dpi=300)
-    plt.close()
-
-
-
 def execute(faa_dir, output_file, threads=1, label_file=None, mode="default",
-            jobs=1, tmpdir=None, block_size=None, index_chunks=None,
-            skip_heatmap=False, annotate_limit=60, keep_db=True):
+            jobs=1, tmpdir=None, block_size=None, index_chunks=None, keep_db=True):
     warnings.filterwarnings(action="ignore")
 
     faa_dir = Path(faa_dir)
@@ -279,11 +249,7 @@ def execute(faa_dir, output_file, threads=1, label_file=None, mode="default",
     df_pocp = pd.DataFrame(np_pocp, index=label_name_list, columns=label_name_list)
     df_pocp.to_csv(output_file)
 
-    if not skip_heatmap:
-        print("[4/4] Drawing heatmap...")
-        draw_heatmap(df_pocp, output_file, annotate_limit=annotate_limit)
-    else:
-        print("[4/4] Heatmap skipped.")
+    print("[4/4] Heatmap should be drawn in fastPOCP_plot.py.")
 
     if not keep_db:
         print("Cleaning up .dmnd files...")
@@ -371,17 +337,6 @@ def build_parser():
         help="Optional DIAMOND --index-chunks value"
     )
     parser.add_argument(
-        "--skip-heatmap",
-        action="store_true",
-        help="Skip PDF heatmap generation"
-    )
-    parser.add_argument(
-        "--annotate-limit",
-        type=int,
-        default=60,
-        help="Annotate cell values on heatmap only if matrix size <= this value (default: 60)"
-    )
-    parser.add_argument(
         "--cleanup-db",
         action="store_true",
         help="Delete .dmnd files after completion (default: keep for reuse)"
@@ -416,8 +371,6 @@ def main():
         tmpdir=args.tmpdir,
         block_size=args.block_size,
         index_chunks=args.index_chunks,
-        skip_heatmap=args.skip_heatmap,
-        annotate_limit=args.annotate_limit,
         keep_db=not args.cleanup_db,
     )
 
